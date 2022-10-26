@@ -3,6 +3,7 @@ package ifpr.pgua.eic.vendinha2022;
 import ifpr.pgua.eic.vendinha2022.controllers.TelaClientes;
 import ifpr.pgua.eic.vendinha2022.controllers.TelaPrincipal;
 import ifpr.pgua.eic.vendinha2022.controllers.TelaProdutos;
+import ifpr.pgua.eic.vendinha2022.model.FabricaConexao;
 import ifpr.pgua.eic.vendinha2022.model.repositories.GerenciadorLoja;
 import ifpr.pgua.eic.vendinha2022.utils.BaseAppNavigator;
 import ifpr.pgua.eic.vendinha2022.utils.ScreenRegistryFXML;
@@ -14,13 +15,15 @@ import ifpr.pgua.eic.vendinha2022.utils.ScreenRegistryFXML;
 public class App extends BaseAppNavigator {
 
     private GerenciadorLoja gerenciador;
-    
+    private FabricaConexao fabricaConexao = FabricaConexao.getInstance();
+
+
     @Override
     public void init() throws Exception {
         // TODO Auto-generated method stub
         super.init();
 
-        gerenciador = new GerenciadorLoja();
+        gerenciador = new GerenciadorLoja(fabricaConexao);
         //gerenciador.geraFakes();
         //gerenciador.carregar();
     }
