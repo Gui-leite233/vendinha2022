@@ -7,7 +7,8 @@ import ifpr.pgua.eic.vendinha2022.model.FabricaConexao;
 import ifpr.pgua.eic.vendinha2022.model.daos.ClienteDAO;
 import ifpr.pgua.eic.vendinha2022.model.daos.JDBCClienteDAO;
 import ifpr.pgua.eic.vendinha2022.model.repositories.ClienteRepositorio;
-import ifpr.pgua.eic.vendinha2022.model.repositories.GerenciadorLoja;
+//import ifpr.pgua.eic.vendinha2022.model.repositories.GerenciadorLoja;
+import ifpr.pgua.eic.vendinha2022.model.repositories.ProdutoRepositorio;
 import ifpr.pgua.eic.vendinha2022.utils.BaseAppNavigator;
 import ifpr.pgua.eic.vendinha2022.utils.ScreenRegistryFXML;
 
@@ -17,7 +18,7 @@ import ifpr.pgua.eic.vendinha2022.utils.ScreenRegistryFXML;
  */
 public class App extends BaseAppNavigator {
 
-    private GerenciadorLoja gerenciador;
+    private ProdutoRepositorio gerenciador;
     private FabricaConexao fabricaConexao = FabricaConexao.getInstance();
 
     private ClienteDAO clienteDao;
@@ -28,7 +29,7 @@ public class App extends BaseAppNavigator {
         // TODO Auto-generated method stub
         super.init();
 
-        gerenciador = new GerenciadorLoja(fabricaConexao);
+        gerenciador = new ProdutoRepositorio(fabricaConexao);
         clienteDao = new JDBCClienteDAO(fabricaConexao);
         clienteRepositorio = new ClienteRepositorio(clienteDao);
 

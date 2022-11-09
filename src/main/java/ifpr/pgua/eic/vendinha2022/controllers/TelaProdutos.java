@@ -4,7 +4,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.vendinha2022.model.entities.Produto;
-import ifpr.pgua.eic.vendinha2022.model.repositories.GerenciadorLoja;
+//import ifpr.pgua.eic.vendinha2022.model.repositories.GerenciadorLoja;
+import ifpr.pgua.eic.vendinha2022.model.repositories.ProdutoRepositorio;
 import ifpr.pgua.eic.vendinha2022.model.results.Result;
 import ifpr.pgua.eic.vendinha2022.model.results.SuccessResult;
 import javafx.fxml.FXML;
@@ -54,9 +55,9 @@ public class TelaProdutos extends BaseController implements Initializable{
     private TextField tfValor;
 
 
-    private GerenciadorLoja gerenciador;
+    private ProdutoRepositorio gerenciador;
 
-    public TelaProdutos(GerenciadorLoja gerenciador){
+    public TelaProdutos(ProdutoRepositorio gerenciador){
         this.gerenciador = gerenciador;
     }
 
@@ -78,7 +79,7 @@ public class TelaProdutos extends BaseController implements Initializable{
     private void atualizarTabela(){
         tbProdutos.getItems().clear();
 
-        tbProdutos.getItems().addAll(gerenciador.getProdutos());
+        tbProdutos.getItems().addAll(gerenciador.listar());
     }
 
     @FXML
@@ -105,7 +106,7 @@ public class TelaProdutos extends BaseController implements Initializable{
             return;
         }
 
-        Result resultado = gerenciador.adicionarProduto(nome, descricao, valor, quantidade);
+        Result resultado = gerenciador.cadastrar(nome, descricao, valor, quantidade);
 
         showMessage(resultado);
 

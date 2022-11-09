@@ -42,9 +42,9 @@ public class JDBCClienteDAO implements ClienteDAO{
             return Result.success("Cliente criado com sucesso!");
 
 
-        }catch(SQLException nomeQueQuiser){
-            System.out.println(nomeQueQuiser.getMessage());
-            return Result.fail(nomeQueQuiser.getMessage());
+        }catch(SQLException exc){
+            System.out.println(exc.getMessage());
+            return Result.fail(exc.getMessage());
         }
     }
 
